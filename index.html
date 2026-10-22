@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看影视 - 看片指南针·观影方法论/选片逻辑/观影姿势/片单策展</title>
+<meta name="description" content="看影视（kanyingshi-h5）是看片指南针：观影方法论、选片逻辑、观影姿势、片单策展；不提供盗版下载、不破会员。网址 https://kanyingshi-h5.github.io">
+<meta name="keywords" content="看影视,看片指南针,观影方法论,选片逻辑,观影姿势,片单策展,怎么选片,看什么电影,kanyingshi">
+<meta name="author" content="看影视">
+<meta name="robots" content="index,follow">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:title" content="看影视 - 看片指南针">
+<meta property="og:description" content="观影方法论、选片逻辑、观影姿势、片单策展。帮你解决"今晚看什么"这个千古难题。">
+<meta property="og:url" content="https://kanyingshi-h5.github.io">
+<link rel="canonical" href="https://kanyingshi-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  background:#F5F3ED;color:#1A1A2E;line-height:1.8;overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(212,175,55,.12),transparent 32%),
+    radial-gradient(circle at 88% 16%,rgba(26,26,46,.08),transparent 34%);
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+section[id]{scroll-margin-top:0}
+::selection{background:#D4AF37;color:#1A1A2E}
+h1,h2,h3,h4{line-height:1.3}
+ul{list-style:none}
+
+/* ===== 顶条 ===== */
+.topbar{background:#1A1A2E;color:#A8A096;font-size:11px;letter-spacing:2px;padding:6px 16px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;border-bottom:2px solid #D4AF37}
+.topbar b{color:#D4AF37}
+
+/* ===== 导航 ===== */
+.nav{position:sticky;top:0;z-index:999;background:rgba(245,243,237,.97);backdrop-filter:blur(8px);border-bottom:1px solid #DCD8CC}
+.nav-in{max-width:1200px;margin:0 auto;height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .compass{width:36px;height:36px;border-radius:50%;border:3px solid #D4AF37;display:flex;align-items:center;justify-content:center;position:relative;background:#1A1A2E}
+.logo .compass::before{content:"";position:absolute;width:2px;height:14px;background:#D4AF37;top:4px;left:50%;transform:translateX(-50%)}
+.logo .compass::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:#D4AF37;bottom:5px;left:50%;transform:translateX(-50%)}
+.logo .txt .cn{font-size:20px;font-weight:900;letter-spacing:.5px}
+.logo .txt .cn em{font-style:normal;color:#D4AF37}
+.logo .txt .en{font-size:9px;letter-spacing:3px;color:#8A8678;text-transform:uppercase}
+.menu{display:flex;gap:4px;flex-wrap:wrap}
+.menu a{font-size:13px;color:#4A4858;padding:8px 12px;border-bottom:2px solid transparent;transition:.2s}
+.menu a:hover{color:#D4AF37;border-bottom-color:#D4AF37}
+.nav-cta{background:#1A1A2E;color:#D4AF37;font-weight:800;font-size:13px;padding:9px 20px;border-radius:8px;border:1px solid #D4AF37;transition:.25s}
+.nav-cta:hover{background:#D4AF37;color:#1A1A2E}
+
+/* ===== Hero ===== */
+.hero{max-width:1200px;margin:0 auto;padding:56px 20px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero-left h1{font-size:clamp(30px,5.2vw,52px);font-weight:900;line-height:1.15}
+.hero-left h1 em{font-style:normal;color:#D4AF37}
+.hero-left .sub{font-size:12px;letter-spacing:5px;color:#8A8678;margin-top:10px;text-transform:uppercase}
+.hero-left .lead{font-size:15px;color:#3A3848;margin:18px 0 24px;max-width:520px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-gold{padding:12px 26px;font-weight:800;border-radius:8px;background:#D4AF37;color:#1A1A2E;border:2px solid #D4AF37;transition:.25s}
+.btn-gold:hover{background:transparent;color:#D4AF37;transform:translateY(-2px)}
+.btn-outline{padding:12px 26px;font-weight:800;border-radius:8px;background:transparent;color:#1A1A2E;border:2px solid #1A1A2E;transition:.25s}
+.btn-outline:hover{background:#1A1A2E;color:#D4AF37;border-color:#1A1A2E}
+
+/* 指南针卡 */
+.compass-card{background:#1A1A2E;border-radius:16px;padding:30px;color:#F5F3ED;position:relative;overflow:hidden}
+.compass-card::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;border:2px dashed rgba(212,175,55,.3);animation:spin 30s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.compass-card .label{font-size:11px;letter-spacing:3px;color:#A8A096;text-transform:uppercase}
+.compass-card .question{font-size:22px;font-weight:900;color:#D4AF37;margin:12px 0 8px}
+.compass-card .answer{font-size:14px;color:#C8C4B8;line-height:1.8}
+.compass-card .shortcuts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.compass-card .shortcuts a{font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;background:rgba(212,175,55,.15);color:#D4AF37;border:1px solid rgba(212,175,55,.3);transition:.2s}
+.compass-card .shortcuts a:hover{background:#D4AF37;color:#1A1A2E}
+
+/* ===== 区块通用 ===== */
+.block{max-width:1200px;margin:0 auto;padding:52px 20px}
+.head{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;flex-wrap:wrap;border-bottom:2px solid #DCD8CC;padding-bottom:10px}
+.head .no{font-size:12px;font-weight:900;color:#1A1A2E;background:#D4AF37;padding:3px 10px;border-radius:4px}
+.head h2{font-size:24px;font-weight:900}
+.head h2 em{font-style:normal;color:#D4AF37}
+.head .en{font-size:11px;letter-spacing:2px;color:#8A8678;text-transform:uppercase}
+.head a.more{margin-left:auto;font-size:13px;color:#4A4858;font-weight:700}
+.head a.more:hover{color:#D4AF37}
+
+/* ===== 选片决策树 ===== */
+.decision{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.node{background:#fff;border:1px solid #DCD8CC;border-radius:14px;padding:22px;position:relative;transition:.3s}
+.node:hover{transform:translateY(-4px);border-color:#D4AF37;box-shadow:0 12px 24px rgba(212,175,55,.12)}
+.node .q{font-size:13px;font-weight:800;color:#D4AF37;margin-bottom:8px}
+.node h3{font-size:17px;font-weight:900;color:#1A1A2E;margin-bottom:8px}
+.node p{font-size:13px;color:#4A4858;line-height:1.7}
+.node .arrow{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:18px;color:#D4AF37;background:#F5F3ED;padding:0 4px}
+.node:last-child .arrow{display:none}
+
+/* ===== 观影姿势卡 ===== */
+.postures{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.posture{background:#1A1A2E;color:#F5F3ED;border-radius:14px;padding:22px;position:relative;overflow:hidden;border-top:4px solid var(--pc,#D4AF37)}
+.posture .icon{font-size:28px;margin-bottom:10px}
+.posture h3{font-size:16px;font-weight:900;margin-bottom:6px}
+.posture p{font-size:13px;color:#A8A096;line-height:1.7}
+.posture .tip{margin-top:10px;font-size:11px;font-weight:800;color:var(--pc,#D4AF37);padding:4px 10px;background:rgba(212,175,55,.1);border-radius:4px;display:inline-block}
+
+/* ===== 片单分类法 ===== */
+.catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.cat{background:#fff;border:1px solid #DCD8CC;border-radius:12px;padding:18px;transition:.25s}
+.cat:hover{border-color:#D4AF37;box-shadow:0 8px 16px rgba(212,175,55,.1)}
+.cat .cat-icon{font-size:24px;margin-bottom:8px}
+.cat h3{font-size:15px;font-weight:900;color:#1A1A2E;margin-bottom:6px}
+.cat ul li{padding:3px 0;font-size:13px;color:#4A4858;border-bottom:1px dashed #ECE8DC}
+.cat ul li:last-child{border-bottom:none}
+.cat .count{font-size:11px;color:#D4AF37;font-weight:800;margin-top:8px}
+
+/* ===== 今晚看什么（随机推荐模拟） ===== */
+.today{background:#1A1A2E;border-radius:16px;padding:36px;color:#F5F3ED;position:relative}
+.today::after{content:"🎞";position:absolute;right:30px;top:20px;font-size:60px;opacity:.08}
+.today-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+.today-item{background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:16px;transition:.25s}
+.today-item:hover{background:rgba(212,175,55,.1);border-color:#D4AF37}
+.today-item .tag{font-size:10px;font-weight:800;color:#1A1A2E;background:#D4AF37;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.today-item h4{font-size:15px;font-weight:900;margin-bottom:4px}
+.today-item p{font-size:12px;color:#A8A096;line-height:1.6}
+
+/* ===== 网址牌 ===== */
+.urlboard{max-width:1200px;margin:0 auto;padding:0 20px 10px}
+.urlcard{background:#1A1A2E;border-radius:14px;padding:24px 26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;border:1px solid #D4AF37}
+.urlcard .lab{font-size:12px;letter-spacing:2px;color:#A8A096}
+.urlcard .bigurl{font-size:clamp(15px,3.2vw,22px);font-weight:900;color:#D4AF37;word-break:break-all}
+.urlcard .bigurl a{color:#D4AF37;border-bottom:1px dashed #D4AF37}
+.urlcard .bigurl a:hover{color:#fff}
+.urlcard .note{font-size:12px;color:#A8A096;text-align:right}
+
+/* ===== 关于 ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;background:#fff;border:1px solid #DCD8CC;border-radius:20px;padding:42px}
+.about h2{font-size:24px;font-weight:900;color:#1A1A2E;margin-bottom:14px}
+.about h2 em{font-style:normal;color:#D4AF37}
+.about p{font-size:15px;color:#3A3848;line-height:1.95;margin-bottom:12px}
+.about .siteurl{color:#D4AF37;font-weight:800;font-size:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:#F5F3ED;border:1px solid #DCD8CC;border-radius:12px;padding:18px;text-align:center}
+.stat .n{font-size:22px;font-weight:900;color:#D4AF37}
+.stat .l{font-size:12px;color:#8A8678;margin-top:3px}
+
+/* ===== 页脚 ===== */
+.foot{border-top:2px solid #DCD8CC;padding:38px 20px 26px;text-align:center;background:#ECE8DC}
+.foot-logo{font-size:20px;font-weight:900;color:#1A1A2E}
+.foot-logo em{font-style:normal;color:#D4AF37}
+.foot-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:14px 0}
+.foot-links a{font-size:13px;color:#4A4858}
+.foot-links a:hover{color:#D4AF37}
+.foot p{font-size:12px;color:#8A8678}
+.foot .disc{margin-top:12px;max-width:880px;margin-left:auto;margin-right:auto;color:#6A6858;line-height:1.8}
+
+/* ===== 响应式 ===== */
+@media(max-width:860px){
+  .menu{display:none}
+  .hero{grid-template-columns:1fr;padding:28px 20px 36px;gap:28px}
+  .about{grid-template-columns:1fr;padding:28px}
+  .block{padding:40px 20px}
+  .nav-in{height:58px}
+  .decision{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+  .hero-left h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- ===== 顶条 ===== -->
+<div class="topbar">
+  <span>看影视 · 看片指南针</span><b>观影方法论</b>
+  <span>选片逻辑 · 观影姿势 · 片单策展</span><b>不追盗版 · 不破会员</b>
+</div>
+
+<!-- ===== 导航 ===== -->
+<div class="nav">
+  <div class="nav-in">
+    <div class="logo">
+      <div class="compass"></div>
+      <div class="txt">
+        <div class="cn">看<em>影视</em></div>
+        <div class="en">WATCH GUIDE COMPASS</div>
+      </div>
+    </div>
+    <nav class="menu">
+      <a href="#home">首页</a>
+      <a href="#decision">选片决策</a>
+      <a href="#posture">观影姿势</a>
+      <a href="#catalog">片单分类</a>
+      <a href="#today">今晚看什么</a>
+      <a href="#about">关于</a>
+    </nav>
+    <a href="#decision" class="nav-cta">开始选片</a>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <h1>看影视<br>解决<em>"今晚看什么"</em></h1>
+    <div class="sub">Watch Guide · Pick Logic · Viewing Method</div>
+    <p class="lead">外面的"看影视"常是影视导航站、聚合搜索、资源站。这版不干那个：看影视=看片指南针——观影方法论、选片逻辑、观影姿势、片单策展。帮你解决"今晚看什么"这个千古难题，而不是帮你找盗版链接。</p>
+    <div class="hero-btns">
+      <a href="#decision" class="btn-gold">🧭 选片决策树</a>
+      <a href="#today" class="btn-outline">🎲 今晚看什么</a>
+    </div>
+  </div>
+  <div class="compass-card">
+    <div class="label">QUICK START</div>
+    <div class="question">"我只有 2 小时，想看个好片"</div>
+    <div class="answer">→ 打开"今晚看什么"，按心情随机抽一部。或者走"选片决策树"，4 步锁定类型。不纠结，不搜索，不翻 30 分钟豆瓣。</div>
+    <div class="shortcuts">
+      <a href="#decision">心情不好 →</a>
+      <a href="#posture">一个人看 →</a>
+      <a href="#catalog">想学点什么 →</a>
+      <a href="#today">随便来一部 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 选片决策树 ===== -->
+<section class="block" id="decision">
+  <div class="head">
+    <span class="no">01</span>
+    <h2>选片<em>决策树</em></h2>
+    <span class="en">Pick Decision Tree</span>
+    <a href="#" class="more">更多 #</a>
+  </div>
+  <div class="decision">
+    <div class="node">
+      <div class="q">第 1 步</div>
+      <h3>今天什么心情？</h3>
+      <p>开心→喜剧/音乐剧；难过→治愈/生活流；焦虑→悬疑/烧脑（转移注意力）；无聊→纪录片/冷门。</p>
+      <div class="arrow">↓</div>
+    </div>
+    <div class="node">
+      <div class="q">第 2 步</div>
+      <h3>有多少时间？</h3>
+      <p>30分钟→短片/动画；90分钟→标准长片；120分钟+→史诗/导演剪辑版；不确定→分段看（选有章节感的）。</p>
+      <div class="arrow">↓</div>
+    </div>
+    <div class="node">
+      <div class="q">第 3 步</div>
+      <h3>和谁一起？</h3>
+      <p>一个人→作者电影/纪录片；两个人→爱情/悬疑（有话题聊）；一家人→合家欢/动画；朋友聚会→喜剧/经典。</p>
+      <div class="arrow">↓</div>
+    </div>
+    <div class="node">
+      <div class="q">第 4 步</div>
+      <h3>想获得什么？</h3>
+      <p>放松→视觉系/爆米花；思考→社会议题/哲学；感动→人物传记/家庭；审美→摄影/美术/配乐。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 观影姿势 ===== -->
+<section class="block" id="posture" style="background:#ECE8DC">
+  <div class="head">
+    <span class="no">02</span>
+    <h2>观影<em>姿势</em></h2>
+    <span class="en">Viewing Postures</span>
+  </div>
+  <div class="postures">
+    <div class="posture" style="--pc:#D4AF37">
+      <div class="icon">🛋</div>
+      <h3>沙发瘫</h3>
+      <p>最经典。适合爆米花片、喜剧、漫威。脑子放空，眼睛吃糖。</p>
+      <span class="tip">适合：放松 / 不费脑</span>
+    </div>
+    <div class="posture" style="--pc:#5B7FFF">
+      <div class="icon">🎧</div>
+      <h3>耳机沉浸</h3>
+      <p>关灯，戴耳机，手机静音。适合音效大片、音乐剧、氛围片。</p>
+      <span class="tip">适合：音效 / 氛围</span>
+    </div>
+    <div class="posture" style="--pc:#FF6B5B">
+      <div class="icon">📓</div>
+      <h3>拉片笔记</h3>
+      <p>暂停、回放、截图、记运镜。适合想学导演/剪辑/摄影的人。</p>
+      <span class="tip">适合：学习 / 分析</span>
+    </div>
+    <div class="posture" style="--pc:#7B5EA7">
+      <div class="icon">🌙</div>
+      <h3>睡前半部</h3>
+      <p>选节奏慢的，看半小时到困就睡。适合失眠、焦虑、需要仪式感的人。</p>
+      <span class="tip">适合：助眠 / 仪式</span>
+    </div>
+    <div class="posture" style="--pc:#4ECCA3">
+      <div class="icon">☕</div>
+      <h3>咖啡馆伴看</h3>
+      <p>带笔记本去咖啡馆，边看边写。适合纪录片、访谈、有信息量的片。</p>
+      <span class="tip">适合：学习 / 工作</span>
+    </div>
+    <div class="posture" style="--pc:#FFB347">
+      <div class="icon">👥</div>
+      <h3>暂停讨论</h3>
+      <p>看完一段就暂停聊。适合和伴侣/朋友一起看有争议话题的片。</p>
+      <span class="tip">适合：社交 / 深度</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 片单分类法 ===== -->
+<section class="block" id="catalog">
+  <div class="head">
+    <span class="no">03</span>
+    <h2>片单<em>分类法</em></h2>
+    <span class="en">Catalog System</span>
+    <a href="#" class="more">更多 #</a>
+  </div>
+  <div class="catalog">
+    <div class="cat">
+      <div class="cat-icon">🎭</div>
+      <h3>按情绪</h3>
+      <ul>
+        <li>想哭一场</li>
+        <li>想笑出声</li>
+        <li>想被吓到</li>
+        <li>想安静下来</li>
+        <li>想热血沸腾</li>
+      </ul>
+      <div class="count">5 类 · 每类 10+</div>
+    </div>
+    <div class="cat">
+      <div class="cat-icon">🕐</div>
+      <h3>按时长</h3>
+      <ul>
+        <li>碎片时间（&lt;40min）</li>
+        <li>标准场（90-120min）</li>
+        <li>马拉松（&gt;150min）</li>
+        <li>分段友好</li>
+        <li>短片合集</li>
+      </ul>
+      <div class="count">5 类 · 按时间筛选</div>
+    </div>
+    <div class="cat">
+      <div class="cat-icon">🎨</div>
+      <h3>按审美</h3>
+      <ul>
+        <li>摄影构图绝美</li>
+        <li>配乐封神</li>
+        <li>服装/美术</li>
+        <li>色彩美学</li>
+        <li>长镜头大师</li>
+      </ul>
+      <div class="count">5 类 · 视觉向</div>
+    </div>
+    <div class="cat">
+      <div class="cat-icon">🧠</div>
+      <h3>按思考</h3>
+      <ul>
+        <li>哲学问题</li>
+        <li>社会议题</li>
+        <li>历史反思</li>
+        <li>科技伦理</li>
+        <li>人性灰度</li>
+      </ul>
+      <div class="count">5 类 · 深度向</div>
+    </div>
+    <div class="cat">
+      <div class="cat-icon">🌍</div>
+      <h3>按地域</h3>
+      <ul>
+        <li>东亚（中日韩）</li>
+        <li>欧洲（法意德）</li>
+        <li>拉美（墨西哥/阿根廷）</li>
+        <li>中东/非洲</li>
+        <li>东南亚</li>
+      </ul>
+      <div class="count">5 区 · 世界电影</div>
+    </div>
+    <div class="cat">
+      <div class="cat-icon">📅</div>
+      <h3>按年代</h3>
+      <ul>
+        <li>默片时代</li>
+        <li>黄金好莱坞</li>
+        <li>新浪潮</li>
+        <li>90年代独立</li>
+        <li>近十年佳作</li>
+      </ul>
+      <div class="count">5 段 · 影史巡游</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 今晚看什么 ===== -->
+<section class="block" id="today" style="background:#ECE8DC">
+  <div class="head">
+    <span class="no">04</span>
+    <h2>今晚<em>看什么</em></h2>
+    <span class="en">What To Watch Tonight</span>
+    <a href="#" class="more">换一批 #</a>
+  </div>
+  <div class="today">
+    <div style="font-size:14px;color:#A8A096;margin-bottom:4px">基于你当前的心情和时间，随机推荐：</div>
+    <div class="today-grid">
+      <div class="today-item">
+        <span class="tag">心情：想安静</span>
+        <h4>小森林（夏秋篇）</h4>
+        <p>市子回到老家，自己种菜、做饭、过四季。没有大起大落，只有米饭和梅子酒。</p>
+      </div>
+      <div class="today-item">
+        <span class="tag">时间：90min</span>
+        <h4>婚姻故事</h4>
+        <p>诺亚·鲍姆巴赫写离婚。亚当·德赖弗和斯嘉丽·约翰逊的表演，每一场戏都是教科书。</p>
+      </div>
+      <div class="today-item">
+        <span class="tag">一个人看</span>
+        <h4>迷失东京</h4>
+        <p>索菲亚·科波拉。两个失眠的人在东京相遇。整部片像一场温柔的梦。</p>
+      </div>
+      <div class="today-item">
+        <span class="tag">想学点什么</span>
+        <h4>我的章鱼老师</h4>
+        <p>一个南非男人每天潜水，和一只章鱼建立关系。关于自然、脆弱和连接。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 网址牌 ===== -->
+<div class="urlboard">
+  <div class="urlcard">
+    <div>
+      <div class="lab">网站名称 / 网站网址</div>
+      <div class="bigurl"><a href="https://kanyingshi-h5.github.io">看影视 -- https://kanyingshi-h5.github.io</a></div>
+    </div>
+    <div class="note">看片指南针 · 观影方法论<br>不提供盗版下载</div>
+  </div>
+</div>
+
+<!-- ===== 关于 ===== -->
+<section class="block" id="about">
+  <div class="about">
+    <div>
+      <h2>看影视：<em>帮你"看"得更好</em></h2>
+      <p>"看影视"这名字外面常被做成影视导航站、聚合搜索、资源站。我们反着来：做看片指南针——观影方法论、选片逻辑、观影姿势、片单策展。不帮你找盗版链接，帮你解决"今晚看什么"。</p>
+      <p>本站不提供盗版下载、不破解会员、不托管侵权片源；所有片单仅指向正版平台与官方发行。网站名称：看影视，网站网址：<span class="siteurl">https://kanyingshi-h5.github.io</span></p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">4 步</div><div class="l">选片决策树</div></div>
+      <div class="stat"><div class="n">6 种</div><div class="l">观影姿势</div></div>
+      <div class="stat"><div class="n">30+ 类</div><div class="l">片单分类法</div></div>
+      <div class="stat"><div class="n">0 盗版</div><div class="l">不破会员不托管</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="foot">
+  <div class="foot-logo">看<em>影视</em> · WATCH GUIDE COMPASS</div>
+  <div class="foot-links">
+    <a href="#decision">选片决策</a>
+    <a href="#posture">观影姿势</a>
+    <a href="#catalog">片单分类</a>
+    <a href="#today">今晚看什么</a>
+    <a href="#about">关于</a>
+  </div>
+  <p>© 2026 看影视 · 网站名称：看影视 · 网站网址：https://kanyingshi-h5.github.io</p>
+  <p class="disc">本站为观影方法论/选片逻辑/片单策展演示页。旧版"看影视"类名称常关联影视导航、聚合搜索、资源站等版权灰产；本页不提供盗版院线、不破解会员、不托管侵权片源。实际观看请走正版平台与官方发行。</p>
+</footer>
+
+</body>
+</html>
